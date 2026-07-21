@@ -1,0 +1,31 @@
+import fs from 'fs';
+import { dateStringToDate } from './Utils.js';
+export class CsvFileReader {
+    fileName;
+    data = [];
+    constructor(fileName) {
+        this.fileName = fileName;
+    }
+    read() {
+        this.data = fs
+            .readFileSync(this.fileName, {
+            encoding: 'utf-8',
+        })
+            .split('\n')
+            .map((row) => {
+            return row.split(',');
+        })
+            .map((row) => {
+            return [
+                dateStringToDate(row[0]),
+                row[1],
+                row[2],
+                parseInt(row[3]),
+                parseInt(row[4]),
+                row[5],
+                row[6],
+            ];
+        });
+    }
+}
+//# sourceMappingURL=CsvFileReader.js.map
