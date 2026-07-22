@@ -1,21 +1,16 @@
 import { log } from 'console';
+// import { MatchReader } from './inheritance/MatchReader.js';
 import { CsvFileReader } from './CsvFileReader.js';
 import { MatchResult } from './MatchResult.js';
+import { MatchReader } from './MatchReader.js';
 
-const reader = new CsvFileReader('football.csv');
-reader.read();
+//membuat objek yang memenuhi 'DataReader' interface
+const csvFileReader = new CsvFileReader('football.csv');
 
-const dateOfFirstMatch = reader.data[0][0];
+// membuat instance dari MatchReader dan masukkan sesuatu yang memenuhi 'DataReader' interface
+const matchReader = new MatchReader(csvFileReader);
+matchReader.load();
 
-log(reader.data[0]);
+//matchReader.matches
 
-let manUnitedWins = 0;
-
-for (const match of reader.data) {
-  if (match[1] === 'Man United' && match[5] === MatchResult.HomeWin) {
-    manUnitedWins++;
-  } else if (match[2] === 'Man United' && match[5] === MatchResult.AwayWin) {
-    manUnitedWins++;
-  }
-}
-log(`Man United won ${manUnitedWins} games`);
+// log(`Man United won ${manUnitedWins} games`);
