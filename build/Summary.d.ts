@@ -8,6 +8,7 @@ export interface OutputTarget {
 export declare class Summary {
     analyzer: Analyzer;
     outputTarget: OutputTarget;
+    static winsAnalysisWithHtmlReport(team: string): Summary;
     constructor(analyzer: Analyzer, outputTarget: OutputTarget);
     buildAndPrintReport(matches: MatchData[]): void;
 }
