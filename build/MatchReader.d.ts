@@ -1,5 +1,4 @@
-import { MatchResult } from './MatchResult.js';
-type MatchData = [Date, string, string, number, number, MatchResult, string];
+import { MatchData } from './MatchData.js';
 interface DataReader {
     read(): void;
     data: string[][];
